@@ -8,7 +8,8 @@ public class ship_movement : MonoBehaviour
     private float boatSpeed = 5;
     public Color boatColor;
     private int rotationSpeed = 3;
-    private float timer = 0;
+    public float timer = 0;
+    private float currentTime = 1;
 
     void Start()
     {
@@ -39,6 +40,14 @@ public class ship_movement : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        
+
+        if (timer > currentTime && timer < currentTime + 0.2)
+        {
+            print((int)timer);
+            currentTime = (currentTime + 1);
+        }
+
+
+
     }
 }
