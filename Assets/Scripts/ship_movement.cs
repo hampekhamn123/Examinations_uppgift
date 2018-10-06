@@ -10,6 +10,9 @@ public class ship_movement : MonoBehaviour
     private int rotationSpeed = 3;
     public float timer = 0;
     private float currentTime = 1;
+    private float newColor1;
+    private float newColor2;
+    private float newColor3;
 
     void Start()
     {
@@ -29,7 +32,7 @@ public class ship_movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0f, 0f, rotationSpeed);
+            transform.Rotate(0f, 0f, rotationSpeed / 2);
             rend.color = Color.green;
         }
 
@@ -43,11 +46,18 @@ public class ship_movement : MonoBehaviour
 
         if (timer > currentTime && timer < currentTime + 0.2)
         {
-            print((int)timer);
+            print("timer:" + " " + (int)timer);
             currentTime = (currentTime + 1);
         }
+        /*
+        newColor1 = Random.Range(0f, 1.1f);
+        newColor2 = Random.Range(0f, 1.1f);
+        newColor3 = Random.Range(0f, 1.1f);
 
-
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rend.color = new Color(newColor1, newColor2, newColor3);
+        }
+        */
     }
 }
