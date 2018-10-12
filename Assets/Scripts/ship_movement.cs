@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class ship_movement : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ship_movement : MonoBehaviour
     public SpriteRenderer rend;
     private float boatSpeed;
     private int rotationSpeed = 5;
+    private int boatMinSpeed = 3;
+    private int boatMaxSpeed = 11;
     #endregion
 
     #region timer 
@@ -41,16 +44,16 @@ public class ship_movement : MonoBehaviour
     void Start()
     {
         //Randomiserar startpositionen i x axeln
-        startPositionX = Random.Range(-9.8f, 9.8f);
+        startPositionX = Random.Range(leftSide, rightSide);
 
         //Randomiserar startpositionen i y axeln
-        startPositionY = Random.Range(-5.5f, 5.5f);
+        startPositionY = Random.Range(downSide, upSide);
         
         //Ändrar startpositionen
         transform.Translate(startPositionY, startPositionX, startPositionZ);
 
         //Randomiserar båtens hastiget
-        boatSpeed = Random.Range(3, 11);
+        boatSpeed = Random.Range(boatMinSpeed, boatMaxSpeed);
     }
 
     void Update()
@@ -139,5 +142,12 @@ public class ship_movement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, upSide, transform.position.z);
         }
+        //hastigheten ökar för varje sekund som spelet är igång
+        boatSpeed = (boatSpeed + (Time.deltaTime / 3));
+
     }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            EditorApplication.isPlaying = false;
+        }
 }
