@@ -4,24 +4,39 @@ using UnityEngine;
 
 public class ship_movement : MonoBehaviour
 {
+    #region Ship
     public SpriteRenderer rend;
     private float boatSpeed;
-    public Color boatColor;
-    private int rotationSpeed = 3;
+    private int rotationSpeed = 5;
+    #endregion
+
+    #region timer 
     public float timerSeconds = 0;
-    private int timerMinutes = 59;
+    private int timerMinutes = 0;
     private int timerHours = 0;
     private float currentTime = 1;
+    #endregion
+    
+    #region Colour
     private float newColor1;
     private float newColor2;
     private float newColor3;
+    public Color boatColor;
+    #endregion
+
+    #region positions
+
     private float startPositionX;
     private float startPositionY;
     private float startPositionZ = 0;
+    #endregion
+
+    #region warps
     private float rightSide = 9.8f;
     private float leftSide = -9.8f;
     private float upSide = 5.5f ;
     private float downSide = -5.5f;
+    #endregion
 
     void Start()
     {
